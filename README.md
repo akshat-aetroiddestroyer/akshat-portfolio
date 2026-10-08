@@ -138,6 +138,28 @@ Drag the `dist/` folder into Netlify Drop, or connect your GitHub repo with:
 npm run build
 # then push the dist/ folder to gh-pages branch
 ```
+## 🤝 Connect With Me
+
+I'm always open to connecting, discussing ideas, collaborating on projects, and exploring new opportunities.
+
+- **GitHub:** https://github.com/akshat-aetroiddestroyer
+- **LinkedIn:** https://www.linkedin.com/in/akshat-balothiya-a552aa360
+- **Instagram:** https://www.instagram.com/holisticaaakshatt
+- **X / Twitter:** https://x.com/venom1842924975
+- **Email:** akahatbalothiya@gmail.com
+
+---
+
+## ⭐ Support
+
+If you found this project interesting or enjoyed exploring the portfolio:
+
+- ⭐ **Star this repository** — it really helps!
+- 🔗 **Share the portfolio** with other developers
+- 💬 **Feel free to share feedback or suggestions**
+- 🤝 **Connect with me** on LinkedIn or GitHub
+
+Thanks for checking out my work! 🚀
 
 ---
 
