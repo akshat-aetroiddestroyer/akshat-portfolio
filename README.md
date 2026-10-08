@@ -6,7 +6,7 @@ A cinematic, scroll-driven personal portfolio built with **React + Vite**, featu
 
 ## 🚀 Live Demo
 
-> _Deploy on Vercel or Netlify — see [Deployment](#deployment) below._
+https://akshhat-portfolio.netlify.app/
 
 ---
 
