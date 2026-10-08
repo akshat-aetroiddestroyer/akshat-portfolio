@@ -2,6 +2,8 @@
 
 A cinematic, scroll-driven personal portfolio built with **React + Vite**, featuring a real-time 3D avatar powered by **Three.js**, GSAP scroll animations, interactive chess, an AI chatbot, and full project showcases.
 
+![Portfolio homepage](screenshots/portfolio-homepage.png)
+
 ---
 
 ## 🚀 Live Demo
