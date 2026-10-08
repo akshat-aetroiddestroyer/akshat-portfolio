@@ -2,6 +2,14 @@ body:has(.play-page) {
   overflow: auto !important;
 }
 
+body:has(.play-page) .header,
+body:has(.play-page) .icons-section,
+body:has(.play-page) .landing-circle1,
+body:has(.play-page) .landing-circle2,
+body:has(.play-page) .nav-fade {
+  display: none !important;
+}
+
 .play-page {
   min-height: 100vh;
   background-color: var(--backgroundColor);
@@ -83,13 +91,14 @@ body:has(.play-page) {
 
 .chess-container {
   display: flex;
-  gap: 15px;
+  gap: 20px;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1240px;
   position: relative;
   z-index: 1;
+  margin: 0 auto;
 }
 
 .chess-board-section {
@@ -244,23 +253,26 @@ body:has(.play-page) {
 }
 
 .chess-square.light {
-  background-color: #b8a99a;
+  background-color: #8c7aa6;
 }
 
 .chess-square.dark {
-  background-color: #6b5d52;
+  background-color: #43305c;
 }
 
 .chess-square.selected {
   background-color: #fb8dff80 !important;
+  box-shadow: inset 0 0 14px rgba(251, 141, 255, 0.6);
 }
 
 .chess-square.last-move {
-  background-color: #c2a4ff4d !important;
+  background-color: #c2a4ff59 !important;
+  box-shadow: inset 0 0 10px rgba(194, 164, 255, 0.4);
 }
 
 .chess-square.in-check {
-  background: radial-gradient(circle at center, #ff4444 0%, transparent 70%) !important;
+  background: radial-gradient(circle at center, rgba(255, 68, 68, 0.9) 0%, rgba(255, 68, 68, 0.25) 70%, transparent 100%) !important;
+  box-shadow: 0 0 15px rgba(255, 68, 68, 0.7);
 }
 
 .coord-rank {
@@ -268,7 +280,7 @@ body:has(.play-page) {
   top: 3px;
   left: 4px;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   pointer-events: none;
 }
 
@@ -277,18 +289,18 @@ body:has(.play-page) {
   bottom: 2px;
   right: 4px;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   pointer-events: none;
 }
 
 .chess-square.light .coord-rank,
 .chess-square.light .coord-file {
-  color: #6b5d52;
+  color: #3b2a54;
 }
 
 .chess-square.dark .coord-rank,
 .chess-square.dark .coord-file {
-  color: #b8a99a;
+  color: #c4b5e6;
 }
 
 .chess-piece {
@@ -304,7 +316,7 @@ body:has(.play-page) {
 .chess-piece svg {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.4));
 }
 
 .chess-square:hover .chess-piece {
@@ -313,20 +325,22 @@ body:has(.play-page) {
 
 .move-indicator {
   position: absolute;
-  width: 30%;
-  height: 30%;
-  background: #00000026;
+  width: 28%;
+  height: 28%;
+  background: rgba(194, 164, 255, 0.7);
   border-radius: 50%;
   pointer-events: none;
+  box-shadow: 0 0 8px rgba(194, 164, 255, 0.9);
 }
 
 .move-indicator.capture {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   background: transparent;
-  border: 5px solid rgba(0, 0, 0, 0.15);
+  border: 4px solid rgba(251, 141, 255, 0.85);
   border-radius: 50%;
   box-sizing: border-box;
+  box-shadow: 0 0 10px rgba(251, 141, 255, 0.6), inset 0 0 10px rgba(251, 141, 255, 0.25);
 }
 
 .game-status {
@@ -501,6 +515,41 @@ body:has(.play-page) {
   border-bottom-left-radius: 4px;
 }
 
+.message-content.typing {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  padding: 4px 2px;
+}
+
+.message-content.typing span {
+  width: 6px;
+  height: 6px;
+  background: var(--accentColor);
+  border-radius: 50%;
+  display: inline-block;
+  animation: typingPulse 1.4s infinite ease-in-out both;
+}
+
+.message-content.typing span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.message-content.typing span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes typingPulse {
+  0%, 80%, 100% {
+    transform: scale(0.4);
+    opacity: 0.3;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 .chat-input-area {
   display: flex;
   gap: 8px;
@@ -554,12 +603,15 @@ body:has(.play-page) {
   .chess-container {
     flex-direction: column;
     align-items: center;
+    gap: 16px;
   }
   .chess-board-section {
+    order: 1;
     width: 100%;
     max-width: 540px;
   }
   .chess-side-panel {
+    order: 2;
     width: 100%;
     max-width: 540px;
     flex-direction: row;
@@ -589,6 +641,7 @@ body:has(.play-page) {
     flex: 1;
   }
   .chat-panel {
+    order: 3;
     width: 100%;
     max-width: 540px;
     height: 400px;

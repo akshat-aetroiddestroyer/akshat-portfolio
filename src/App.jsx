@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { SocialRail } from './components/SocialRail';
 import { Cursor } from './components/Cursor';
@@ -9,15 +9,17 @@ import { MyWorks } from './pages/MyWorks';
 import { Play } from './pages/Play';
 
 export const App = () => {
-  const [isLoading, setIsLoading] = useState(() => window.innerWidth > 768);
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+  const [isLoading, setIsLoading] = useState(() => isHome && window.innerWidth > 768);
 
   React.useEffect(() => {
-    if (isLoading) {
+    if (isLoading && isHome) {
       document.body.classList.add('loading-active');
     } else {
       document.body.classList.remove('loading-active');
     }
-  }, [isLoading]);
+  }, [isLoading, isHome]);
 
   return (
     <>
@@ -30,8 +32,8 @@ export const App = () => {
         />
       )}
       <Cursor />
-      <Navbar />
-      <SocialRail />
+      {isHome && <Navbar />}
+      {isHome && <SocialRail />}
 
       <main className="main-body">
         <Routes>
