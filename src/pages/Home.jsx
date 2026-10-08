@@ -126,7 +126,13 @@ export const Home = () => {
         opacity: 0
       });
 
+      let fallbackTimer = null;
+      let hasHeroRevealed = false;
+
       const playHeroEntrance = () => {
+        if (hasHeroRevealed) return;
+        hasHeroRevealed = true;
+        if (fallbackTimer) clearTimeout(fallbackTimer);
         const entranceTl = gsap.timeline();
 
         // STAGE 5: Left greeting begins ("Hello! I'm") at 0.70s
@@ -200,21 +206,30 @@ export const Home = () => {
       window.addEventListener('hero-intro-start', playHeroEntrance, { once: true });
 
       // Fallback timer: if hero-intro-start wasn't fired within 4s, reveal gracefully
-      setTimeout(() => {
-        gsap.to(['.landing-intro-greeting', '.landing-name-first', '.landing-name-last', '.landing-role-prefix', '.landing-info-h2', '.landing-h2-info', '.header', '.icons-section', '.resume-button'], {
+      fallbackTimer = setTimeout(() => {
+        if (hasHeroRevealed) return;
+        hasHeroRevealed = true;
+        gsap.to(['.landing-intro-greeting', '.landing-name-first', '.landing-name-last', '.landing-role-prefix', '.landing-info-h2', '.landing-h2-info'], {
           opacity: 1,
           y: 0,
           filter: 'blur(0px)',
           clipPath: 'inset(0% 0% 0% 0%)',
           duration: 0.4
         });
+        gsap.to(['.header', '.icons-section', '.resume-button'], {
+          opacity: 1,
+          duration: 0.4
+        });
       }, 4000);
     } else {
-      gsap.set(['.landing-intro-greeting', '.landing-name-first', '.landing-name-last', '.landing-role-prefix', '.landing-info-h2', '.landing-h2-info', '.header', '.icons-section', '.resume-button'], {
+      gsap.set(['.landing-intro-greeting', '.landing-name-first', '.landing-name-last', '.landing-role-prefix', '.landing-info-h2', '.landing-h2-info'], {
         opacity: 1,
         y: 0,
         filter: 'blur(0px)',
         clipPath: 'inset(0% 0% 0% 0%)'
+      });
+      gsap.set(['.header', '.icons-section', '.resume-button'], {
+        opacity: 1
       });
     }
 

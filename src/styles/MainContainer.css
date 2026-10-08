@@ -492,6 +492,7 @@ h2.landing-info-h2 {
   left: 50%;
   transform: translate(-50%);
   pointer-events: none;
+  clip-path: none !important;
 }
 
 .social-icons {
@@ -562,6 +563,7 @@ h2.landing-info-h2 {
   transition: all 0.3s ease;
   pointer-events: auto;
   text-decoration: none;
+  clip-path: none !important;
 }
 
 .resume-button:hover {
